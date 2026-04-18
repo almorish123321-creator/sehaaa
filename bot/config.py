@@ -1,11 +1,15 @@
 # Configuration file for Seha Sick Leave Bot
+# تم التعديل ليعمل مع متغيرات البيئة على Render
 
-BOT_TOKEN = '7517890109:AAGqykdBdcB7xh2Z_kvkHKWIvwixiNvmAlw'
-ADMIN_USER_ID = 5561466213
+import os
 
-# API Settings
-API_BASE_URL = 'https://80-iayzosfpiazlzday7ujjn-d2b18cd3.manusvm.computer' # يمكن تغييرها حسب عنوان الخادم
-API_ENDPOINT = '/api/add_leave.php'
+# قراءة التوكن من متغيرات البيئة (آمن)
+BOT_TOKEN = os.environ.get('BOT_TOKEN')
+ADMIN_USER_ID = int(os.environ.get('ADMIN_USER_ID', 7853478744))
+
+# API Settings - استخدم رابط Render الخاص بك
+API_BASE_URL = os.environ.get('API_BASE_URL', 'https://sehaaa.onrender.com')
+API_ENDPOINT = '/api/medical-leaves'
 API_FULL_URL = API_BASE_URL + API_ENDPOINT
 
 # Paths
@@ -26,10 +30,9 @@ KINGDOM_TEXT = f'{IMAGES_DIR}/كلمةالمملكةالعربيةالسعودي
 HOSPITAL_LOGO = f'{IMAGES_DIR}/شعارالمستشفى.png'
 HEALTH_INFO_CENTER_LOGO = f'{IMAGES_DIR}/شعارالمركزالوطنيللمعلوماتالصحية.jpg'
 
-# QR Code settings
-QR_URL = 'https://www.seha.sa/#/inquiries/slenquiry'
+# QR Code settings - تم التغيير إلى رابط موقعك
+QR_URL = 'https://sehaaa.onrender.com'
 
 # PDF settings
 PDF_WIDTH = 297  # mm
 PDF_HEIGHT = 419  # mm
-
