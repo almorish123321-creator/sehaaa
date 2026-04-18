@@ -3,7 +3,7 @@ services:
     name: seha-medical-system
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python src/main.py & python bot/bot.py
+    startCommand: python src/main.py & python bot/bot_updated.py
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
