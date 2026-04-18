@@ -7,6 +7,7 @@ MarkupSafe==2.1.5
 itsdangerous==2.2.0
 click==8.1.7
 blinker==1.8.2
+Flask-Cors
 
 # متطلبات البوت (Telegram)
 python-telegram-bot==22.2
