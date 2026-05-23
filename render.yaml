@@ -1,0 +1,15 @@
+services:
+  - type: web
+    name: sehaaa
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn src.main:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: SECRET_KEY
+        generateValue: true
+        # ⚠️ أضف متغيرات البيئة التالية في لوحة تحكم Render يدوياً:
+        # BOT_TOKEN = توكن بوت تيليجرام الخاص بك
+        # ADMIN_USER_ID = رقم تليغرام الخاص بك
+        # API_BASE_URL = https://YOUR-APP-NAME.onrender.com
