@@ -10,7 +10,7 @@ import logging
 import os
 from telegram import Update, ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 from telegram.ext import Application, CommandHandler, MessageHandler, filters, ContextTypes
-from config_updated import BOT_TOKEN, ADMIN_USER_ID, OUTPUT_DIR
+from config_env import BOT_TOKEN, ADMIN_USER_ID, OUTPUT_DIR
 from pdf_generator_updated import generate_sick_leave_pdf
 from api_client import send_leave_data_to_api
 from message_parser import MessageParser
