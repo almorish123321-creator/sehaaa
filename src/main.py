@@ -10,7 +10,9 @@ from src.routes.user import user_bp
 from src.routes.medical_leaves import medical_leaves_bp
 
 app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'))
-app.config['SECRET_KEY'] = 'SECRET_KEY'
+
+# إعدادات من متغيرات البيئة
+app.config['SECRET_KEY'] = os.environ.get('FLASK_SECRET_KEY', 'asdf#FGSgvasgf$5$WGT')
 
 # تفعيل CORS
 CORS(app)
@@ -18,8 +20,9 @@ CORS(app)
 app.register_blueprint(user_bp, url_prefix='/api')
 app.register_blueprint(medical_leaves_bp)
 
-# uncomment if you need to use database
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}"
+# قاعدة البيانات - تدعم متغيرات البيئة
+database_uri = os.environ.get('DATABASE_URI', f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}")
+app.config['SQLALCHEMY_DATABASE_URI'] = database_uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
 with app.app_context():
@@ -56,4 +59,5 @@ def serve(path):
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    port = int(os.environ.get('FLASK_PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
