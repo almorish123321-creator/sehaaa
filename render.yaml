@@ -3,7 +3,32 @@ services:
     name: seha-medical-system
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn src.main:app
+    startCommand: gunicorn src.main:app --bind 0.0.0.0:$PORT --workers 4 --timeout 120
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.0
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_USER_ID
+        sync: false
+      - key: API_BASE_URL
+        sync: false
+      - key: FLASK_SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URI
+        sync: false
+
+  - type: worker
+    name: seha-telegram-bot
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python3 bot/bot.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: BOT_TOKEN
+        sync: false
+      - key: ADMIN_USER_ID
+        sync: false
+      - key: API_BASE_URL
+        sync: false

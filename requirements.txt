@@ -1,8 +1,11 @@
-# متطلبات الموقع (Flask)
-flask-cors
-flask-sqlalchemy
-python-dotenv
+# ============================================
+# متطلبات مشروع صحة - Sehaaa Requirements
+# ============================================
+
+# === متطلبات الموقع (Flask) ===
 Flask==3.0.3
+flask-cors==5.0.0
+flask-sqlalchemy==3.1.1
 gunicorn==23.0.0
 Werkzeug==3.0.4
 Jinja2==3.1.4
@@ -11,13 +14,20 @@ itsdangerous==2.2.0
 click==8.1.7
 blinker==1.8.2
 
-# متطلبات البوت (Telegram)
+# === متطلبات البوت (Telegram) ===
 python-telegram-bot==22.2
+
+# === متطلبات PDF ===
 fpdf2==2.8.3
 Pillow==11.3.0
 qrcode==8.2
 python-bidi==0.6.6
 arabic-reshaper==3.0.0
 reportlab==4.4.2
+
+# === متطلبات API والتواريخ ===
 requests==2.31.0
 hijri-converter==2.3.1
+
+# === متطلبات البيئة ===
+python-dotenv==1.1.0

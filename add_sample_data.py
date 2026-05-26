@@ -14,7 +14,6 @@ def add_sample_data():
     """إضافة البيانات التجريبية"""
     medical_leave_model = MedicalLeave()
     
-    # البيانات التجريبية
     sample_data = {
         'service_code': 'PSL54640252025',
         'identity_number': '7657865464',
