@@ -1,5 +1,6 @@
 import os
 import sys
+# DON'T CHANGE THIS !!!
 sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
 
 from flask import Flask, send_from_directory
@@ -9,9 +10,7 @@ from src.routes.user import user_bp
 from src.routes.medical_leaves import medical_leaves_bp
 
 app = Flask(__name__, static_folder=os.path.join(os.path.dirname(__file__), 'static'))
-
-# ========== قراءة المتغيرات من Render (آمن - بدون قيم افتراضية) ==========
-app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'change-this-secret-key')
+app.config['SECRET_KEY'] = 'asdf#FGSgvasgf$5$WGT'
 
 # تفعيل CORS
 CORS(app)
@@ -19,13 +18,10 @@ CORS(app)
 app.register_blueprint(user_bp, url_prefix='/api')
 app.register_blueprint(medical_leaves_bp)
 
-# قاعدة البيانات
-db_path = os.path.join(os.path.dirname(__file__), 'database', 'app.db')
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{db_path}"
+# uncomment if you need to use database
+app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{os.path.join(os.path.dirname(__file__), 'database', 'app.db')}"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db.init_app(app)
-
-# إنشاء الجداول إذا لم تكن موجودة
 with app.app_context():
     db.create_all()
 
@@ -58,7 +54,6 @@ def serve(path):
         else:
             return "index.html not found", 404
 
+
 if __name__ == '__main__':
-    port = int(os.environ.get('PORT', 5000))
-    debug_mode = os.environ.get('DEBUG', 'False').lower() == 'true'
-    app.run(host='0.0.0.0', port=port, debug=debug_mode)
+    app.run(host='0.0.0.0', port=5000, debug=True)
