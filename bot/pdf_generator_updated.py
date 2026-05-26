@@ -10,7 +10,7 @@ import qrcode
 from datetime import datetime
 from fpdf import FPDF
 from PIL import Image
-from config_updated import *
+from config_env import *
 import arabic_reshaper
 from bidi.algorithm import get_display
 
